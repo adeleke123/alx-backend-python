@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Contains a function that multiplies a float by multiplier"""
+"""Contains a function that multiplies a float by multiplier."""
 from typing import Callable
 
 
