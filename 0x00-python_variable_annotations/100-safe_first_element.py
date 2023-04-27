@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Contains Augmented code with the correct duck-typed annotations."""
+"""Contains Augmented code with the correct duck-typed annotations"""
 from typing import Any, Union, Sequence
 
 
