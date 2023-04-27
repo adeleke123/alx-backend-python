@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Contains method that safely gets value from dictionary."""
+"""Contains method that safely gets value from dictionary"""
 from typing import Mapping, Any, Union, TypeVar, Optional
 
 T = TypeVar('T')
