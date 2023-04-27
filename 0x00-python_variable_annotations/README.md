@@ -9,7 +9,10 @@ Back-end
 Concepts
 For this project, we expect you to look at this concept:
 
-Advanced Python
+[https://intranet.alxswe.com/concepts/554](Advanced Python)
+
+![image](https://user-images.githubusercontent.com/51156057/234840159-780a1a2e-3e51-4ecd-b82a-503ae6da534f.png)
+
 
 
 Resources
