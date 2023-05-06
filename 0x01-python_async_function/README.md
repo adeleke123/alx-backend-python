@@ -1,23 +1,25 @@
 0x02. Python - Async Comprehension
 ==================================
 
-PythonBack-end
+
 -   By Emmanuel Turlay, Staff Software Engineer at Cruise
 
+![](https://s3.amazonaws.com/alx-intranet.hbtn.io/uploads/medias/2019/12/ee85b9f67c384e29525b.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIARDDGGGOUSBVO6H7D%2F20220628%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20220628T132116Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=8d0b744d99c8db95af5258137e5f83fc0d6f2f664dbab7e577a4df43a690951b)
 
 Resources
 ---------
 
 **Read or watch**:
+
 -   [PEP 530 -- Asynchronous Comprehensions](https://alx-intranet.hbtn.io/rltoken/hlwtED-iLsdORSgly8DsyQ "PEP 530 -- Asynchronous Comprehensions")
 -   [What's New in Python: Asynchronous Comprehensions / Generators](https://alx-intranet.hbtn.io/rltoken/0OkbObYzCKtO7ZUAxfKvkw "What's New in Python: Asynchronous Comprehensions / Generators")
 -   [Type-hints for generators](https://alx-intranet.hbtn.io/rltoken/l4Fnno568VbVIn9GvrFVtQ "Type-hints for generators")
-
 
 Learning Objectives
 -------------------
 
 At the end of this project, you are expected to be able to [explain to anyone](https://alx-intranet.hbtn.io/rltoken/_jK22HqiCeh5NjKJ4ZHBww "explain to anyone"), **without the help of Google**:
+
 -   How to write an asynchronous generator
 -   How to use async comprehensions
 -   How to type-annotate generators
@@ -26,6 +28,7 @@ Requirements
 ------------
 
 ### General
+
 -   Allowed editors: `vi`, `vim`, `emacs`
 -   All your files will be interpreted/compiled on Ubuntu 18.04 LTS using `python3` (version 3.7)
 -   All your files should end with a new line
@@ -46,6 +49,7 @@ Tasks
 ### 0\. Async Generator
 
 Write a coroutine called `async_generator` that takes no arguments.
+
 The coroutine will loop 10 times, each time asynchronously wait 1 second, then yield a random number between 0 and 10. Use the `random` module.
 
 ```
@@ -69,6 +73,7 @@ bob@dylan:~$ ./0-main.py
 ```
 
 **Repo:**
+
 -   GitHub repository: `alx-backend-python`
 -   Directory: `0x02-python_async_comprehension`
 -   File: `0-async_generator.py`
@@ -76,8 +81,8 @@ bob@dylan:~$ ./0-main.py
 
 
 ### 1\. Async Comprehensions
-
 Import `async_generator` from the previous task and then write a coroutine called `async_comprehension` that takes no arguments.
+
 The coroutine will collect 10 random numbers using an async comprehensing over `async_generator`, then return the 10 random numbers.
 
 ```
@@ -98,6 +103,7 @@ bob@dylan:~$ ./1-main.py
 ```
 
 **Repo:**
+
 -   GitHub repository: `alx-backend-python`
 -   Directory: `0x02-python_async_comprehension`
 -   File: `1-async_comprehension.py`
@@ -105,7 +111,6 @@ bob@dylan:~$ ./1-main.py
 
 
 ### 2\. Run time for four parallel comprehensions
-
 Import `async_comprehension` from the previous file and write a `measure_runtime` coroutine that will execute `async_comprehension` four times in parallel using `asyncio.gather`.
 
 `measure_runtime` should measure the total runtime and return it.
@@ -135,3 +140,62 @@ bob@dylan:~$ ./2-main.py
 -   GitHub repository: `alx-backend-python`
 -   Directory: `0x02-python_async_comprehension`
 -   File: `2-measure_runtime.py`
+
+
+### 3\. Tasks
+
+Import `wait_random` from `0-basic_async_syntax`.
+
+Write a function (do not create an async function, use the regular function syntax to do this) `task_wait_random` that takes an integer `max_delay` and returns a `asyncio.Task`.
+
+```
+bob@dylan:~$ cat 3-main.py
+#!/usr/bin/env python3
+
+import asyncio
+
+task_wait_random = __import__('3-tasks').task_wait_random
+
+
+async def test(max_delay: int) -> float:
+    task = task_wait_random(max_delay)
+    await task
+    print(task.__class__)
+
+asyncio.run(test(5))
+
+bob@dylan:~$ ./3-main.py
+<class '_asyncio.Task'>
+```
+
+**Repo:**
+-  GitHub repository: `alx-backend-python`
+-  Directory: `0x01-python_async_function`
+-  File: `3-tasks.py`
+
+
+
+### 4\. Tasks
+
+Take the code from `wait_n` and alter it into a new function `task_wait_n`. The code is nearly identical to `wait_n` except `task_wait_random` is being called.
+
+```
+bob@dylan:~$ cat 4-main.py
+#!/usr/bin/env python3
+
+import asyncio
+
+task_wait_n = __import__('4-tasks').task_wait_n
+
+n = 5
+max_delay = 6
+print(asyncio.run(task_wait_n(n, max_delay)))
+
+bob@dylan:~$ ./4-main.py
+[0.2261658205652346, 1.1942770588220557, 1.8410422186086628, 2.1457353803430523, 4.002505454641153]
+```
+
+**Repo:**
+-  GitHub repository: `alx-backend-python`
+-  Directory: `0x01-python_async_function`
+-  File: `4-tasks.py`
